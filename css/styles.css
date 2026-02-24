@@ -1,0 +1,136 @@
+/* --- CSS Variables (Design Tokens) --- */
+:root {
+    --bg-primary: #f4f4f9;
+    --bg-dark: #2c3e50;
+    --bg-light: #ecf0f1;
+    --text-main: #333;
+    --text-light: #fff;
+    --accent-color: #3498db;
+    
+    /* Toaster Colors */
+    --toaster-body: #bdc3c7;
+    --toaster-slot: #2c3e50;
+    --toaster-lever: #7f8c8d;
+    --bread-crust: #c28d38;
+    --bread-dough: #e6b971;
+}
+
+/* --- Basic Reset & Typography --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden; /* Prevents horizontal scrolling bugs */
+}
+
+/* --- Layout Sections --- */
+section, header, footer {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.hero-section {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+}
+
+.hero-section h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive typography */
+    margin-bottom: 1rem;
+}
+
+.scroll-indicator {
+    margin-top: 2rem;
+    opacity: 0.8;
+}
+
+/* --- Skills List --- */
+.content-wrapper {
+    margin-bottom: 3rem;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    list-style: none;
+}
+
+.skills-list li {
+    background: var(--accent-color);
+    color: var(--text-light);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* --- THE TOASTER --- */
+.toaster-section {
+    background-color: var(--bg-light);
+}
+
+.toaster-container {
+    position: relative;
+    width: 200px;
+    height: 180px;
+}
+
+.bread {
+    width: 140px;
+    height: 140px;
+    background-color: var(--bread-dough);
+    border: 6px solid var(--bread-crust);
+    border-radius: 15px 15px 5px 5px;
+    position: absolute;
+    left: 30px;
+    bottom: -20px; /* Hidden inside */
+    z-index: 1;
+}
+
+.toaster-front {
+    width: 100%;
+    height: 140px;
+    background-color: var(--toaster-body);
+    border-radius: 20px 20px 10px 10px;
+    position: absolute;
+    bottom: 0;
+    z-index: 2;
+    box-shadow: inset -5px -10px 20px rgba(0,0,0,0.1), 0 10px 20px rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: center;
+}
+
+/* The dark slot at the top */
+.toaster-front::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    width: 160px;
+    height: 15px;
+    background-color: var(--toaster-slot);
+    border-radius: 10px;
+}
+
+.toaster-lever {
+    width: 15px;
+    height: 40px;
+    background-color: var(--toaster-lever);
+    position: absolute;
+    right: 15px;
+    top: 40px;
+    border-radius: 5px;
+}
