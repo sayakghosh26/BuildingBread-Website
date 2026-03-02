@@ -56,22 +56,28 @@ navLinks.forEach((link) => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-    const toaster = document.querySelector(".toaster-wrapper");
+  const toaster = document.querySelector(".toaster-wrapper");
 
-    const handleScroll = () => {
-      // If the user scrolls down more than 2 pixels
-      if (window.scrollY > 2) {
-        // Trigger the pop animation!
-        toaster.classList.add("is-popped");
-        
-        // Remove the event listener so it only happens once and stays popped
-        window.removeEventListener("scroll", handleScroll);
-      }
-    };
+  const handleScroll = () => {
+    // Uses documentElement.scrollTop as a fallback for mobile browsers
+    const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+    
+    // The moment the screen moves down even a pixel
+    if (scrollPosition > 0) { 
+      toaster.classList.add("is-popped");
+      
+      // Clean up both event listeners so it only pops once
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("touchmove", handleScroll);
+    }
+  };
 
-    // Listen for the scroll
-    window.addEventListener("scroll", handleScroll);
-  });
+  // 1. Listens for traditional mouse wheel / trackpad scrolling
+  window.addEventListener("scroll", handleScroll, { passive: true });
+  
+  // 2. Listens instantly for a finger swipe on mobile and tablets
+  window.addEventListener("touchmove", handleScroll, { passive: true });
+});
 
   document.addEventListener("DOMContentLoaded", () => {
   const posterRow = document.querySelector('.poster-row');

@@ -484,74 +484,141 @@ textarea:focus-visible {
 }
 
 .highlight {
-  padding-top: 58px;
+  position: relative;
+  padding-top: 40px;
+  overflow: hidden;
 }
 
 .highlight-blob {
-  background: rgba(215, 225, 166, 0.45);
-  border-radius: 90px;
-  padding: 32px 64px 44px;
+  position: relative;
+  z-index: 2;
+  width: min(1220px, 100%);
+  margin: 0 auto;
+  padding: clamp(34px, 3vw, 56px) clamp(34px, 4vw, 82px) clamp(42px, 3.8vw, 72px);
+  background: url("../assests/images/BG.png") center / 100% 100% no-repeat;
+}
+
+.highlight-ticker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+  transform: translateY(-45%);
+}
+
+.highlight-ticker-track {
+  display: flex;
+  width: max-content;
+  gap: 2.4rem;
+  animation: district-ticker 34s linear infinite;
+}
+
+.highlight-ticker-track span {
+  flex: none;
+  white-space: nowrap;
+  color: rgba(195, 211, 120, 0.86);
+  font-family: "Londrina Solid", sans-serif;
+  font-size: clamp(126px, 13.5vw, 290px);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
+}
+
+@keyframes district-ticker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 1.2rem));
+  }
+}
+
+.highlight .section-link {
+  margin: 0 18px 14px auto;
+  color: var(--red);
+  font-family: "Schoolbell", cursive;
+  font-size: clamp(32px, 2.4vw, 56px);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
 }
 
 .highlight-grid {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 50px;
-  align-items: start;
+  grid-template-columns: minmax(360px, 1.02fr) minmax(420px, 1fr);
+  gap: clamp(22px, 2.3vw, 42px);
+  align-items: stretch;
 }
 
 .brand-head {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: clamp(14px, 1.2vw, 22px);
+  margin-bottom: 8px;
 }
 
 .brand-head h2 {
-  font-size: clamp(72px, 5.6vw, 112px);
+  font-size: clamp(76px, 5.2vw, 116px);
   margin: 0;
   color: var(--red);
-  font-family: "Archivo", sans-serif;
+  font-family: "Londrina Solid", sans-serif;
   font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
 }
 
 .brand-head img {
-  width: 62px;
-  height: 62px;
+  width: clamp(56px, 4.2vw, 88px);
+  height: clamp(56px, 4.2vw, 88px);
+  object-fit: contain;
+  border-radius: 16px;
 }
 
 .chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin: 8px 0 30px;
+  margin: 0 0 24px;
 }
 
 .chip-row span {
   border: 2px solid #5f90e8;
-  border-radius: 20px;
+  border-radius: 18px;
   color: #5f90e8;
-  padding: 2px 10px;
-  font-size: 16px;
+  padding: 3px 12px 2px;
+  font-size: clamp(14px, 0.9vw, 18px);
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  line-height: 1;
 }
 
 .highlight-copy p {
-  margin: 14px 0;
-  font-size: 36px;
-  line-height: 1.2;
+  margin: 0 0 18px;
+  color: #40362f;
+  font-size: clamp(20px, 1.25vw, 30px);
+  line-height: 1.16;
+  font-family: "Schoolbell", cursive;
+  overflow-wrap: anywhere;
 }
 
 .highlight-copy strong {
   color: #5d89e3;
+  font-weight: 400;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .highlight-media {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 22px;
+  display: flex;
+  align-items: stretch;
+  gap: clamp(14px, 1.3vw, 22px);
 }
 
 .highlight-media img {
-  width: 100%;
+  width: calc(50% - 8px);
   aspect-ratio: 3 / 4;
   object-fit: cover;
 }
@@ -885,6 +952,31 @@ button {
     grid-template-columns: 1fr;
   }
 
+  .highlight {
+    padding-top: 28px;
+  }
+
+  .highlight-ticker {
+    transform: translateY(-40%);
+  }
+
+  .highlight-ticker-track span {
+    font-size: clamp(100px, 15vw, 180px);
+  }
+
+  .highlight-blob {
+    width: min(980px, 100%);
+    padding: 28px 34px 34px;
+  }
+
+  .highlight .section-link {
+    margin-bottom: 12px;
+  }
+
+  .highlight-media img {
+    width: calc(50% - 7px);
+  }
+
   .service-items {
     margin-top: 20px;
     grid-template-columns: 1fr 1fr;
@@ -929,7 +1021,7 @@ button {
     gap: 8px;
   }
 
-  .hero-toaster {
+  .toaster-wrapper {
     width: clamp(370px, 57vw, 650px);
     margin-left: -18px;
   }
@@ -1021,7 +1113,7 @@ button {
     gap: 4px;
   }
 
-  .hero-toaster {
+  .toaster-wrapper {
     width: min(400px, 118%);
     margin-left: -24px;
     margin-bottom: -8px;
@@ -1072,17 +1164,57 @@ button {
     padding-bottom: 2px;
   }
 
+  .highlight {
+    padding-top: 10px;
+  }
+
+  .highlight-ticker {
+    transform: translateY(-35%);
+  }
+
+  .highlight-ticker-track span {
+    font-size: clamp(66px, 17vw, 126px);
+  }
+
   .highlight-blob {
-    border-radius: 40px;
-    padding: 12px;
+    width: 100%;
+    padding: 18px 16px 22px;
+  }
+
+  .highlight .section-link {
+    margin-right: 0;
+    font-size: clamp(22px, 7vw, 30px);
   }
 
   .brand-head h2 {
-    font-size: 54px;
+    font-size: clamp(52px, 14vw, 78px);
+  }
+
+  .brand-head img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .chip-row {
+    margin-bottom: 14px;
+  }
+
+  .chip-row span {
+    font-size: 11px;
+    padding: 3px 8px 2px;
   }
 
   .highlight-copy p {
-    font-size: 20px;
+    font-size: clamp(16px, 4.2vw, 21px);
+    margin-bottom: 12px;
+  }
+
+  .highlight-media {
+    gap: 12px;
+  }
+
+  .highlight-media img {
+    width: calc(50% - 6px);
   }
 
   .services h2 {
