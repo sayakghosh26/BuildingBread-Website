@@ -1,52 +1,100 @@
-gsap.registerPlugin(ScrollTrigger);
+const stickyNav = document.querySelector('.site-nav');
+const navLinks = Array.from(
+  document.querySelectorAll('.brand-title[href^="#"], .section-nav a[href^="#"], .action-nav a[href^="#"]')
+);
 
-// 1. Mobile Menu Toggle
-const menuToggle = document.querySelector('.menu-toggle');
-const navLinks = document.querySelector('.nav-links');
+const sectionIds = [...new Set(navLinks.map((link) => link.getAttribute('href')))].filter(Boolean);
+const sections = sectionIds
+  .map((id) => document.querySelector(id))
+  .filter((section) => section instanceof HTMLElement);
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    // Animate hamburger to X
-    const bars = document.querySelectorAll('.bar');
-    bars[0].style.transform = navLinks.classList.contains('active') ? 'rotate(-45deg) translate(-5px, 6px)' : 'none';
-    bars[1].style.opacity = navLinks.classList.contains('active') ? '0' : '1';
-    bars[2].style.transform = navLinks.classList.contains('active') ? 'rotate(45deg) translate(-5px, -6px)' : 'none';
-});
+const navOffset = () => (stickyNav ? stickyNav.offsetHeight + 10 : 0);
 
-// Close menu when a link is clicked
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => navLinks.classList.remove('active'));
-});
-
-// 2. Toaster Animation
-const tl = gsap.timeline({
-    scrollTrigger: {
-        trigger: ".hero-container",
-        start: "top top",
-        end: "bottom center",
-        scrub: 1.5,
+const setActiveLink = (activeId) => {
+  navLinks.forEach((link) => {
+    const isActive = link.getAttribute('href') === activeId;
+    link.classList.toggle('active', isActive);
+    if (isActive) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
     }
+  });
+};
+
+const updateActiveLinkOnScroll = () => {
+  const scrollY = window.scrollY + navOffset() + 20;
+  let activeSection = null;
+
+  sections.forEach((section) => {
+    if (section.offsetTop <= scrollY) {
+      activeSection = section;
+    }
+  });
+
+  setActiveLink(activeSection ? `#${activeSection.id}` : "");
+};
+
+navLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    if (!targetId || targetId === '#') {
+      return;
+    }
+
+    const target = document.querySelector(targetId);
+    if (!(target instanceof HTMLElement)) {
+      return;
+    }
+
+    event.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - navOffset();
+    window.scrollTo({ top, behavior: prefersReducedMotion ? 'auto' : 'smooth' });
+    setActiveLink(targetId);
+  });
 });
 
-tl.to(".toaster-lever", {
-    y: 50,
-    ease: "power1.inOut"
-})
-.to(".bread", {
-    y: -130,
-    backgroundColor: "#d2a679", // Bakes as it pops
-    ease: "back.out(2)"
-}, "-=0.2");
+document.addEventListener("DOMContentLoaded", () => {
+    const toaster = document.querySelector(".toaster-wrapper");
 
-// 3. Skills Cards Entrance
-gsap.from(".skill-card", {
-    scrollTrigger: {
-        trigger: ".skills-grid",
-        start: "top 85%",
-    },
-    y: 30,
-    opacity: 0,
-    stagger: 0.1,
-    duration: 0.8,
-    ease: "power2.out"
+    const handleScroll = () => {
+      // If the user scrolls down more than 2 pixels
+      if (window.scrollY > 2) {
+        // Trigger the pop animation!
+        toaster.classList.add("is-popped");
+        
+        // Remove the event listener so it only happens once and stays popped
+        window.removeEventListener("scroll", handleScroll);
+      }
+    };
+
+    // Listen for the scroll
+    window.addEventListener("scroll", handleScroll);
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+  const posterRow = document.querySelector('.poster-row');
+
+  if (posterRow) {
+    // When the mouse enters the row, slow down the animation
+    posterRow.addEventListener('mouseenter', () => {
+      // .getAnimations() targets the CSS @keyframes running on this element
+      const animations = posterRow.getAnimations();
+      animations.forEach(anim => {
+        anim.playbackRate = 0.5; // Slows down to 20% speed
+      });
+    });
+
+    // When the mouse leaves, return to normal speed
+    posterRow.addEventListener('mouseleave', () => {
+      const animations = posterRow.getAnimations();
+      animations.forEach(anim => {
+        anim.playbackRate = 1; // Back to 100% speed
+      });
+    });
+  }
 });
+
+window.addEventListener('scroll', updateActiveLinkOnScroll, { passive: true });
+window.addEventListener('load', updateActiveLinkOnScroll);

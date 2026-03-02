@@ -1,79 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="BuildingBread | Portfolio of a Creative Web Developer">
-    <title>BuildingBread | Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building Bread</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Archivo:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&family=Patrick+Hand&family=Archivo:wght@800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Schoolbell&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-
-    <nav class="navbar" aria-label="Main Navigation">
-        <div class="nav-container">
-            <div class="logo">BuildingBread</div>
-            
-            <button class="menu-toggle" aria-label="Open Menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </button>
-
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact" class="nav-cta">Contact</a></li>
-            </ul>
-        </div>
+  <header class="site-nav">
+    <div class="brand-block">
+      <a href="#hero" class="brand-title">BUILDING BREAD</a>
+      <nav class="section-nav" aria-label="Primary">
+        <a href="#selected-work">SELECTED WORK</a>
+        <a href="#services">SERVICES</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#team">MEET THE TEAM</a>
+      </nav>
+    </div>
+    <nav class="action-nav" aria-label="Quick links">
+      <a href="#projects" class="project-link">Project</a>
+      <a href="#contact" class="contact-btn">Contact</a>
     </nav>
+  </header>
 
-    <main>
-        <section id="home" class="hero-container">
-            <div class="hero-content">
-                <h1>BuildingBread</h1>
-                <p>Creating interactive digital experiences with precision and playfulness.</p>
-            </div>
-
-            <div class="toaster-stage">
-                <div class="toaster-container">
-                    <div class="bread"></div>
-                    <div class="toaster-front">
-                        <div class="toaster-lever"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scroll-prompt">
-                <span>Scroll to Toast</span>
-                <div class="arrow"></div>
-            </div>
-        </section>
-
-        <section id="about" class="info-section">
-            <div class="container">
-                <div class="text-block">
-                    <h2>Skills & Expertise</h2>
-                    <p>Combining technical logic with creative design to solve complex problems.</p>
-                </div>
+  <main>
+    <section class="hero section-shell" id="hero">
+      <div class="hero-grid">
+        <figure class="hero-visual">
+            <div class="toaster-wrapper">
+                <img src="assests/images/Toaster whole.png" alt="Toaster Back" class="hero-toaster-back" />
                 
-                <div class="skills-grid">
-                    <div class="skill-card">JavaScript</div>
-                    <div class="skill-card">HTML/CSS</div>
-                    <div class="skill-card">Python</div>
-                    <div class="skill-card">SQL</div>
-                </div>
+                <img src="assests/images/Bread.png" alt="Toast" class="toast-bread" />
+                
+                <img src="assests/images/toaster front final.png" alt="Toaster Front" class="hero-toaster-front" />
+                
+                <img src="assests/images/toaster knob.png" alt="Toaster Knob" class="toast-knob" />
             </div>
-        </section>
-    </main>
+        </figure>
+        <div class="hero-copy">
+          <h1 class="hero-heading">
+            <span class="hero-title-script">Building</span>
+            <span class="hero-title-block">BREAD</span>
+          </h1>
+          <p class="hero-sub">A BANGALORE BASED CREATIVE STUDIO</p>
+          
+          <p class="bubble">
+            <strong>YOUR TOAST IS READY</strong>
+            <span>Scroll to find out what</span>
+            <span>we do</span>
+          </p>
+        </div>
+      </div>
+      <p class="ticker" data-text="WE DONT JUST POST, WE POSITION! WE DONT JUST POST, WE POSITION! WE DONT JUST POST, WE POSITION! WE DONT JUST POST, WE POSITION!">
+        WE DONT JUST POST, WE POSITION! WE DONT JUST POST, WE POSITION! WE DONT JUST POST, WE POSITION!
+      </p>
+    </section>
 
-    <footer id="contact" class="footer">
-        <p>© 2026 BuildingBread. Let's build something together.</p>
-        <a href="mailto:hello@example.com" class="footer-link">hello@example.com</a>
-    </footer>
+    <section class="selected-work section-shell" id="selected-work">
+      <div class="logo-row">
+        <img src="assests/images/Bombay shaving company.png" alt="Bombay Shaving Company" />
+        <img src="assests/images/grapevine.png" alt="Grapevine" />
+        <img src="assests/images/uber.png" alt="Uber" />
+        <img src="assests/images/anandi school.png" alt="Anandi School" />
+        <img src="assests/images/gladful.png" alt="Gladful" />
+        <img src="assests/images/everyday.png" alt="Everyday" />
+        <img src="assests/images/Layer 1.png" alt="District" />
+        <img src="assests/images/boba.png" alt="Boba Bhai" />
+        <img src="assests/images/mesa-removebg-preview.png" alt="Mesa" />
+        <img src="assests/images/meraki.png" alt="Meraki" />
+        <img src="assests/images/statesman.png" alt="Statesman" />
+      </div>
+      <div class="poster-row">
+        <img src="assests/images/mango_thela.jpg" alt="Work sample" />
+        <img src="assests/images/food_porn.jpg" alt="Work sample" />
+        <img src="assests/images/korean_burger.jpg" alt="Work sample" />
+        <img src="assests/images/namita_thapar.jpg" alt="Work sample" />
+        <img src="assests/images/mango_thela.jpg" alt="Work sample" />
+        <img src="assests/images/food_porn.jpg" alt="Work sample" />
+        <img src="assests/images/korean_burger.jpg" alt="Work sample" />
+        <img src="assests/images/namita_thapar.jpg" alt="Work sample" />
+      </div>
+    </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="js/app.js"></script>
+    <section class="highlight section-shell" id="highlight">
+      <div class="highlight-blob">
+        <a href="#projects" class="section-link">Brand highlight 2025</a>
+        <div class="highlight-grid">
+          <div class="highlight-copy">
+            <div class="brand-head">
+              <h2>District</h2>
+              <img src="assests/images/statesman.png" alt="District mark" />
+            </div>
+            <div class="chip-row">
+              <span>CREATIVE PRODUCTION</span>
+              <span>STRATEGY AND SCRIPTING</span>
+              <span>GRAPHIC DESIGN</span>
+            </div>
+            <p><strong>Deliverables:</strong> 30-35 restaurants/ 15-20 reels per month</p>
+            <p><strong>112k views:</strong><br>https://www.instagram.com/p/DMl0UlVRp0t/</p>
+            <p><strong>73k:</strong><br>https://www.instagram.com/reel/DMNi-RNSCe8/</p>
+            <p><strong>More at</strong><br>https://www.instagram.com/p/DMl0UlVRp0t/</p>
+          </div>
+          <div class="highlight-media">
+            <img src="assests/images/Untitled_Artwork 47.png" alt="District post" />
+            <img src="assests/images/Untitled_Artwork 48.png" alt="District post" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services section-shell" id="services">
+      <h2>What do we do?</h2>
+      <p class="services-sub">We butter all sides!</p>
+      <div class="service-items">
+        <article class="service-item pos-1">
+          <img src="assests/images/croissant 2- better cap.png" alt="Post production" />
+          <h3>Post Production</h3>
+        </article>
+        <article class="service-item pos-2">
+          <img src="assests/images/bun-brand audit.png" alt="Brand audit and culture" />
+          <h3>Brand Audit and Culture</h3>
+        </article>
+        <article class="service-item pos-3">
+          <img src="assests/images/baguette(less scandalous) -post production.png" alt="Branding" />
+          <h3>Branding</h3>
+        </article>
+        <article class="service-item pos-4">
+          <img src="assests/images/croissant-brand strategu.png" alt="Brand strategy" />
+          <h3>Brand Strategy</h3>
+        </article>
+        <article class="service-item pos-5">
+          <img src="assests/images/pretzel-.png" alt="Social media production" />
+          <h3>Social Media Production</h3>
+        </article>
+      </div>
+    </section>
+
+    <section class="projects section-shell" id="projects">
+      <div class="projects-bg">Projects</div>
+      <div class="projects-grid">
+        <div class="project-feature">
+          <img src="assests/images/Untitled_Artwork 48.png" alt="Featured project" />
+        </div>
+        <div class="project-list">
+          <article>
+            <h3>District by Zomato</h3>
+            <p>Creative Production | Social Media Growth | Short-Form</p>
+            <p>Creative Production | Social Media Growth | Strategy and Scripting</p>
+          </article>
+          <article>
+            <h3>Uber India X Fam App</h3>
+            <p>Creative Production | Social Media Growth | Short-Form</p>
+            <p>Creative Production | Social Media Growth | Strategy and Scripting</p>
+          </article>
+          <article>
+            <h3>Boba Bhai</h3>
+            <p>Creative Production | Social Media Growth | Short-Form</p>
+          </article>
+          <article>
+            <h3>Mesa School of Business</h3>
+            <p>Creative Production | Social Media Growth | Short-Form</p>
+            <p>Creative Production | Social Media Growth | Strategy and Scripting</p>
+          </article>
+          <article>
+            <h3>Grapevine</h3>
+            <p>Creative Production | Social Media Growth | Short-Form</p>
+            <p>Strategy and Scripting</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="team section-shell" id="team">
+      <img src="assests/images/Oven.png" alt="Oven background" class="oven-bg" />
+      <h2>MEET THE TEAM</h2>
+      <div class="team-cards">
+        <article class="member card-blue">
+          <img src="assests/images/Untitled_Artwork 49.png" alt="Team member" />
+          <h3>Name</h3>
+          <p>DIRECTOR OF PHOTOGRAPHY</p>
+        </article>
+        <article class="member card-green">
+          <img src="assests/images/Untitled_Artwork 35.png" alt="Team member" />
+          <h3>Shambhvi Rao</h3>
+          <p>FOUNDER</p>
+        </article>
+        <article class="member card-blue">
+          <img src="assests/images/Untitled_Artwork 66.png" alt="Team member" />
+          <h3>Name</h3>
+          <p>CREATIVE DIRECTOR</p>
+        </article>
+        <article class="member card-green tilt">
+          <img src="assests/images/Untitled_Artwork 67.png" alt="Team member" />
+          <h3>Name</h3>
+          <p>DIRECTOR OF PHOTOGRAPHY</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact section-shell" id="contact">
+      <h2>Lets work together! Lets work together!</h2>
+      <div class="contact-bg-text">BUILDING BREAD</div>
+      <div class="contact-row">
+        <p class="email">shambhvi@gmail.com</p>
+        <p class="email">shambhvi@gmail.com</p>
+      </div>
+      <form class="contact-form">
+        <div class="form-grid">
+          <label>Name
+            <input type="text" placeholder="XXXX" />
+          </label>
+          <label>Email ID
+            <input type="email" placeholder="XXXX" />
+          </label>
+        </div>
+        <label>Tell Us What's Simmering?
+          <textarea rows="4" placeholder="XXXX"></textarea>
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
 </body>
 </html>
